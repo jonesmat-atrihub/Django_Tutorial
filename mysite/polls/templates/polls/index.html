@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Polls</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/styles.css' %}">
 </head>
 <body>
 
 {% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-    <li>
-        <a href="{% url 'polls:detail' question.id %}">
-            {{ question.question_text }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for question in latest_question_list %}
+            <li>
+                <a href="{% url 'polls:detail' question.id %}">
+                    {{ question.question_text }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 {% else %}
-<p>No polls are available.</p>
+    <p>No polls are available.</p>
 {% endif %}
 
 </body>
